@@ -14,7 +14,8 @@ class QtGuiApplication1 : public QMainWindow
 
 public slots:
 	void on_btn_dl_clear_clicked();
-	void on_btn_nd_add_clicked();
+	void on_btn_line_add_clicked();
+	void on_btn_circle_add_clicked();
 	void on_btn_dl_delete_clicked();
 	void on_btn_import_clicked();
 	void on_btn_run_clicked();

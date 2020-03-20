@@ -6,13 +6,23 @@ QtGuiApplication1::QtGuiApplication1(QWidget *parent)
 	ui.setupUi(this);
 }
 
-void QtGuiApplication1::on_btn_nd_add_clicked()
+void QtGuiApplication1::on_btn_line_add_clicked()
 {
-	QString context = ui.ledt_nd_add->text();
-	if (!ui.ledt_nd_add->text().isEmpty()) {
-		ui.list_dl->addItem(ui.ledt_nd_add->text());
-		ui.ledt_nd_add->clear();
-	}
+	string str = ui.cbox_line->currentText().toStdString();
+	str = str + " " + ui.sbox_line_x1->text().toStdString();
+	str = str + " " + ui.sbox_line_y1->text().toStdString();
+	str = str + " " + ui.sbox_line_x2->text().toStdString();
+	str = str + " " + ui.sbox_line_y2->text().toStdString();
+	ui.list_dl->addItem(QString::fromStdString(str));
+}
+
+void QtGuiApplication1::on_btn_circle_add_clicked()
+{
+	string str = "C";
+	str = str + " " + ui.sbox_circle_x->text().toStdString();
+	str = str + " " + ui.sbox_circle_y->text().toStdString();
+	str = str + " " + ui.sbox_line_r->text().toStdString();
+	ui.list_dl->addItem(QString::fromStdString(str));
 }
 
 void QtGuiApplication1::on_btn_dl_clear_clicked()
@@ -30,7 +40,7 @@ void QtGuiApplication1::on_btn_dl_delete_clicked()
 
 void QtGuiApplication1::on_btn_import_clicked()
 {
-	QString filepath = QFileDialog::getOpenFileName(this, "选择要输入的文件", "/", "文本文件 (*.txt);; 所有文件 (*.*);;");
+	QString filepath = QFileDialog::getOpenFileName(this, "choose the input file", "/", "text file (*.txt);; all files (*.*);;");
 	qDebug() << "path=" << filepath;
 	QFile file(filepath);
 	if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
