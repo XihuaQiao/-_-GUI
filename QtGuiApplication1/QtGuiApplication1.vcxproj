@@ -38,6 +38,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>D:\Software\Qt\5.14.0\msvc2017_64\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
@@ -81,6 +84,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="qcustomplot.cpp" />
     <ClCompile Include="QtGuiApplication1.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CData.h" />
+    <QtMoc Include="qcustomplot.h" />
     <ClInclude Include="ui.h" />
   </ItemGroup>
   <ItemGroup>

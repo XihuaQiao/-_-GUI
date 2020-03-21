@@ -1,8 +1,8 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
 <Qt_DEFINES_>UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;NDEBUG;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB</Qt_DEFINES_>
-<Qt_INCLUDEPATH_>D:\IDE\Qt\5.14.0\msvc2017_64\include;D:\IDE\Qt\5.14.0\msvc2017_64\include\QtWidgets;D:\IDE\Qt\5.14.0\msvc2017_64\include\QtGui;D:\IDE\Qt\5.14.0\msvc2017_64\include\QtANGLE;D:\IDE\Qt\5.14.0\msvc2017_64\include\QtCore;/include;D:\IDE\Qt\5.14.0\msvc2017_64\mkspecs\win32-msvc</Qt_INCLUDEPATH_>
-<Qt_LIBS_>D:\IDE\Qt\5.14.0\msvc2017_64\lib\Qt5Widgetsd.lib;D:\IDE\Qt\5.14.0\msvc2017_64\lib\Qt5Guid.lib;D:\IDE\Qt\5.14.0\msvc2017_64\lib\Qt5Cored.lib;D:\IDE\Qt\5.14.0\msvc2017_64\lib\qtmaind.lib;shell32.lib</Qt_LIBS_>
+<Qt_INCLUDEPATH_>D:\Software\Qt\5.14.0\msvc2017_64\include;D:\Software\Qt\5.14.0\msvc2017_64\include\QtWidgets;D:\Software\Qt\5.14.0\msvc2017_64\include\QtGui;D:\Software\Qt\5.14.0\msvc2017_64\include\QtANGLE;D:\Software\Qt\5.14.0\msvc2017_64\include\QtCore;/include;D:\Software\Qt\5.14.0\msvc2017_64\mkspecs\win32-msvc</Qt_INCLUDEPATH_>
+<Qt_LIBS_>D:\Software\Qt\5.14.0\msvc2017_64\lib\Qt5Widgetsd.lib;D:\Software\Qt\5.14.0\msvc2017_64\lib\Qt5Guid.lib;D:\Software\Qt\5.14.0\msvc2017_64\lib\Qt5Cored.lib;D:\Software\Qt\5.14.0\msvc2017_64\lib\qtmaind.lib;shell32.lib</Qt_LIBS_>
 <Qt_LIBPATH_>C:\openssl\lib;C:\Utils\my_sql\mysql-5.7.25-winx64\lib;C:\Utils\postgresql\pgsql\lib</Qt_LIBPATH_>
 <Qt_INCLUDEPATH_
       >$(Qt_INCLUDEPATH_);x64\Debug\moc;x64\Debug\uic</Qt_INCLUDEPATH_>

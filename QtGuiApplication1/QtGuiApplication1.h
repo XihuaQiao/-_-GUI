@@ -5,7 +5,11 @@
 #include <QtCore/QIODevice>
 #include <QDebug>
 #include "ui_QtGuiApplication1.h"
+#include "qcustomplot.h"
 #include "CData.h"
+#include <iostream>
+
+using namespace std;
 
 class QtGuiApplication1 : public QMainWindow
 {
@@ -22,6 +26,9 @@ public slots:
 
 public:
 	QtGuiApplication1(QWidget *parent = Q_NULLPTR);
+    vector<pair<double, double>> lines;
+    vector<int> type;   // 1-L, 2-R, 3-S, 4-C;
+    bool updated = false;   // true->done; false->not yet;
 
 private:
 	Ui::MainWindow ui;

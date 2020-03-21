@@ -13,7 +13,6 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QFrame>
-#include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
@@ -25,6 +24,7 @@
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
+#include <qcustomplot.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -65,7 +65,7 @@ public:
     QFrame *line_5;
     QHBoxLayout *horizontalLayout_2;
     QLabel *lbl_graph;
-    QGraphicsView *gView_graph;
+    QCustomPlot *widget;
     QPushButton *btn_run;
     QFrame *line_6;
     QFrame *line_7;
@@ -295,11 +295,10 @@ public:
 
         horizontalLayout_2->addWidget(lbl_graph);
 
-        gView_graph = new QGraphicsView(centralwidget);
-        gView_graph->setObjectName(QString::fromUtf8("gView_graph"));
-        gView_graph->setAutoFillBackground(false);
+        widget = new QCustomPlot(centralwidget);
+        widget->setObjectName(QString::fromUtf8("widget"));
 
-        horizontalLayout_2->addWidget(gView_graph);
+        horizontalLayout_2->addWidget(widget);
 
         btn_run = new QPushButton(centralwidget);
         btn_run->setObjectName(QString::fromUtf8("btn_run"));

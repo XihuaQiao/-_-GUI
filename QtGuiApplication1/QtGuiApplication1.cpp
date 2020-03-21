@@ -1,9 +1,16 @@
 #include "QtGuiApplication1.h"
+#include <QVector>
+#include <vector>
+#include <sstream>
 
 QtGuiApplication1::QtGuiApplication1(QWidget *parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
+    ui.plot->sizePolicy().setHeightForWidth(true);
+    ui.plot->setInteractions(QCP::iRangeDrag|QCP::iRangeZoom| QCP::iSelectAxes | QCP::iSelectLegend | QCP::iSelectPlottables);
+    ui.plot->xAxis->setLabel("x");
+    ui.plot->yAxis->setLabel("y");
 }
 
 void QtGuiApplication1::on_btn_line_add_clicked()
@@ -49,7 +56,6 @@ void QtGuiApplication1::on_btn_import_clicked()
 	}
 	QTextStream in(&file);
 	QString line = in.readLine(0);
-	int cnt = line.toInt();
 	while (!in.atEnd()) {
 		line = in.readLine();
 		ui.list_dl->addItem(line);
@@ -59,4 +65,77 @@ void QtGuiApplication1::on_btn_import_clicked()
 void QtGuiApplication1::on_btn_run_clicked()
 {
 
+    QVector<double> x(2), y(2);
+
+    if (this->updated)      // already update
+        return;
+
+    char type;
+    double r;
+    vector<QCPItemStraightLine *> LLines;
+    vector<QCPItemLine *> SLines;
+    vector<QCPItemLine *> RLines;
+    vector<QCPCurve *> circles;
+
+    QPen drawPen;
+    drawPen.setColor(Qt::red);
+    drawPen.setWidth(4);
+    ui.plot->addGraph();
+    ui.plot->graph(0)->setPen(drawPen);
+    ui.plot->graph(0)->setLineStyle(QCPGraph::lsNone);
+    ui.plot->graph(0)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, 2));
+    QCPPainter *painter = new QCPPainter();
+
+    for (int i = 0; i < ui.list_dl->count(); i++) {
+        string line = ui.list_dl->item(i)->text().toStdString();
+        stringstream ss;
+        ss << line;
+        ss >> type;
+        if (type == 'C') {
+            ss >> x[0];
+            ss >> y[0];
+            ss >> r;
+            QCPCurve *circle = new QCPCurve(ui.plot->xAxis, ui.plot->yAxis);
+            const int pointCount = 200;
+            QVector<QCPCurveData> dataSpiral1(pointCount);
+            for (int j = 0; j < pointCount; ++j)
+            {
+                double theta = j / (double)(pointCount-1)*2*M_PI;
+                dataSpiral1[j] = QCPCurveData(j, r * qCos(theta) - x[0], r * qSin(theta) - y[0]);
+            }
+            circle->data()->set(dataSpiral1, true);
+        }
+        else {
+            ss >> x[0];
+            ss >> y[0];
+            ss >> x[1];
+            ss >> y[1];
+            if (type == 'L') {
+                QCPItemStraightLine *line = new QCPItemStraightLine(ui.plot);
+                line->point1->setCoords(x[0], y[0]);
+                line->point2->setCoords(x[1], y[1]);
+                ui.plot->graph(0)->addData(x, y);
+                LLines.push_back(line);
+            }
+            else if (type == 'S') {
+                QCPItemLine *line = new QCPItemLine(ui.plot);
+                line->start->setCoords(x[0], y[0]);
+                line->end->setCoords(x[1], y[1]);
+                ui.plot->graph(0)->addData(x, y);
+                SLines.push_back(line);
+            }
+            else if (type == 'R') {
+                QCPItemLine *line = new QCPItemLine(ui.plot);
+                ui.plot->graph(0)->addData(x, y);
+                line->start->setCoords(x[0], y[0]);
+                x[1] = x[0] + 1000000000000000 * (x[1] - x[0]);
+                y[1] = y[1] + 1000000000000000 * (y[1] - y[0]);
+                line->end->setCoords(x[1], y[1]);
+                RLines.push_back(line);
+            }
+        }
+    }
+
+    // set some basic customPlot config:
+    ui.plot->replot(QCustomPlot::rpQueuedReplot);
 }
