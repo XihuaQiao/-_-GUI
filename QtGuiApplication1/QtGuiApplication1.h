@@ -8,6 +8,11 @@
 #include "qcustomplot.h"
 #include "CData.h"
 #include <iostream>
+#include <set>
+#include <QVector>
+#include <vector>
+#include <sstream>
+
 
 using namespace std;
 
@@ -26,9 +31,14 @@ public slots:
 
 public:
 	QtGuiApplication1(QWidget *parent = Q_NULLPTR);
-    vector<pair<double, double>> lines;
-    vector<int> type;   // 1-L, 2-R, 3-S, 4-C;
+    vector<string> datas;
+    vector<QCPItemStraightLine *> LLines;
+    vector<QCPItemLine *> SLines;
+    vector<QCPItemLine *> RLines;
+    vector<QCPCurve *> circles;
     bool updated = false;   // true->done; false->not yet;
+    bool checkLine(string line);
+    void paint(string str);
 
 private:
 	Ui::MainWindow ui;

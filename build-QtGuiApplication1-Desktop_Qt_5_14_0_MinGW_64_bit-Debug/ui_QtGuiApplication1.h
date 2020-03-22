@@ -43,7 +43,6 @@ public:
     QSpinBox *sbox_circle_x;
     QLabel *lbl_line;
     QLabel *label_4;
-    QPushButton *btn_run;
     QSpinBox *sbox_line_y2;
     QSpinBox *sbox_line_x2;
     QComboBox *cbox_line;
@@ -55,6 +54,7 @@ public:
     QPushButton *btn_line_add;
     QLabel *label_2;
     QPushButton *btn_import;
+    QPushButton *btn_run;
     QFrame *line_5;
     QFrame *line_4;
     QHBoxLayout *horizontalLayout_3;
@@ -148,12 +148,6 @@ public:
 
         gridLayout->addWidget(label_4, 3, 0, 1, 1);
 
-        btn_run = new QPushButton(centralwidget);
-        btn_run->setObjectName(QString::fromUtf8("btn_run"));
-        btn_run->setFont(font);
-
-        gridLayout->addWidget(btn_run, 0, 1, 1, 1);
-
         sbox_line_y2 = new QSpinBox(centralwidget);
         sbox_line_y2->setObjectName(QString::fromUtf8("sbox_line_y2"));
         sbox_line_y2->setFont(font);
@@ -236,6 +230,12 @@ public:
         btn_import->setFont(font);
 
         gridLayout->addWidget(btn_import, 0, 4, 1, 1);
+
+        btn_run = new QPushButton(centralwidget);
+        btn_run->setObjectName(QString::fromUtf8("btn_run"));
+        btn_run->setFont(font);
+
+        gridLayout->addWidget(btn_run, 0, 0, 1, 1);
 
 
         verticalLayout->addLayout(gridLayout);
@@ -349,7 +349,6 @@ public:
         label_7->setText(QCoreApplication::translate("MainWindow", "x", nullptr));
         lbl_line->setText(QCoreApplication::translate("MainWindow", "Line", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "x2", nullptr));
-        btn_run->setText(QCoreApplication::translate("MainWindow", "Run", nullptr));
         cbox_line->setItemText(0, QCoreApplication::translate("MainWindow", "L", nullptr));
         cbox_line->setItemText(1, QCoreApplication::translate("MainWindow", "R", nullptr));
         cbox_line->setItemText(2, QCoreApplication::translate("MainWindow", "S", nullptr));
@@ -360,6 +359,7 @@ public:
         btn_line_add->setText(QCoreApplication::translate("MainWindow", "Add", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "x1", nullptr));
         btn_import->setText(QCoreApplication::translate("MainWindow", "Import", nullptr));
+        btn_run->setText(QCoreApplication::translate("MainWindow", "Run", nullptr));
         lbl_dl->setText(QCoreApplication::translate("MainWindow", "descript list", nullptr));
         btn_dl_delete->setText(QCoreApplication::translate("MainWindow", "Delete", nullptr));
         btn_dl_clear->setText(QCoreApplication::translate("MainWindow", "Clear", nullptr));
